@@ -40,8 +40,9 @@ function new_planet_feature(feature_type, other_data={}) constructor{
 		case P_features.Necron_Tomb:
 		awake = 0;
 		sealed = 0;
-		player_hidden = 1
+		player_hidden = 1;
 		planet_display = "Dormant Necron Tomb";
+		starmap_poi="!";
 		break;
 	case P_features.Secret_Base:
 		base_type = 0;
@@ -91,6 +92,7 @@ function new_planet_feature(feature_type, other_data={}) constructor{
 		planet_display = $"{ruins_size} Unexplored Ancient Ruins";
 		completion_level = 0;
 		player_hidden = 1;	
+		starmap_poi="R";
 		static find_starship = function(){
 			f_type = P_features.Starship;
 			planet_display = "Ancient Starship";
@@ -176,6 +178,7 @@ function new_planet_feature(feature_type, other_data={}) constructor{
 		player_hidden = 1;
 		Fragment_type =0;
 		planet_display = "STC Fragment";
+		starmap_poi="STC";
 		break;
 	case P_features.Cave_Network:
 		player_hidden = 1;
@@ -189,6 +192,7 @@ function new_planet_feature(feature_type, other_data={}) constructor{
 	case P_features.Artifact:
 		player_hidden = 1;
 		planet_display = "Artifact";
+		starmap_poi="A";
 		break;
 	case P_features.Warlord7:
 		player_hidden = 1;
@@ -247,6 +251,27 @@ function system_feature_bool(system, search_feature){
 	return sys_bool;
 }
 
+//get the text to prepent to star names for easy identification
+//todo: prune duplicates
+function planet_feature_poi_text(features)
+{
+	var poi = ""
+	for(var i = 0; i < array_length(features); i++)
+	{
+		var current = features[i];
+		if(!is_instanceof(current, new_planet_feature)) { continue; }
+		if(current.player_hidden == 1) 
+		{ 
+			poi += "[?]";
+			continue;
+		}
+	
+		if(!variable_struct_exists(current, "starmap_poi")) { continue; }
+		poi+= "[" + current.starmap_poi + "]";
+	}
+	
+	return poi;
+}
 
 //returns 1 if feature found on given planet returns 0 if feature not found on planet
 function planet_feature_bool(planet, search_feature){

@@ -8,6 +8,7 @@ if (p_type[1]="Craftworld") and (obj_controller.known[6]=0){
 }
 
 var show=name;
+for(var i = 0; i < planets; i++) { show = planet_feature_poi_text(p_feature[i]) + show; }
 
 if (global.cheat_debug=true) then show=string(name)+"#"+string(p_problem[1,1])+":"+string(p_timer[1,1])+"#"+string(p_problem[1,2])+":"+string(p_timer[1,2])+"#"+string(p_problem[1,3])+":"+string(p_timer[1,3]);
 
