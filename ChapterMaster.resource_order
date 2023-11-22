@@ -10,10 +10,10 @@
     {"name":"ItemModifier","order":1,"path":"folders/Scripts/Items/ItemModifier.yy",},
     {"name":"LookupTables","order":43,"path":"folders/Scripts/LookupTables.yy",},
     {"name":"Sys","order":7,"path":"folders/Scripts/Sys.yy",},
+    {"name":"ExceptionHandling","order":30,"path":"folders/Scripts/Sys/ExceptionHandling.yy",},
     {"name":"Logging","order":29,"path":"folders/Scripts/Sys/Logging.yy",},
     {"name":"Utils","order":28,"path":"folders/Scripts/Sys/Utils.yy",},
     {"name":"Turn","order":8,"path":"folders/Scripts/Turn.yy",},
-    {"name":"ExceptionHandling","order":30,"path":"folders/Scripts/Sys/ExceptionHandling.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_credits_bg","order":1,"path":"sprites/spr_credits_bg/spr_credits_bg.yy",},

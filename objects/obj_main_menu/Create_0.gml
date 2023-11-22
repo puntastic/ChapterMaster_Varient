@@ -33,6 +33,18 @@ settings_fullscreen=ini_read_real("Settings","fullscreen",1);
 settings_window_data=ini_read_string("Settings","window_data","fullscreen");
 ini_close()
 
+//loading data into global so I can defer making legacy code better. By making it worse.
+//
+//these are to make it easier to inject into legacy functions without bloating them further
+//ideally these will be removed should the legacy functions be finally obsoleted
+global._itemTable = new ItemTable(new NullLogger(), json_load(CONFIG_DIRECTORY + "/" + ITEM_TABLE_FILE_NAME));
+global._itemModifierTable = new ItemModifierTable(new NullLogger(), json_load(CONFIG_DIRECTORY + "/" + MODIFICATION_TABLE_FILE_NAME));
+global._randomArtifactTable = new PossibleArtifactTable(new NullLogger(), json_load(CONFIG_DIRECTORY + "/" + ALLOWED_MODIFICATIONS_FILE_NAME));
+
+global.GetItemTable = function() { return global._itemTable; }
+global.GetItemModifierTable = function() { return global._itemModifierTable; }
+global.GetRandomArtifactTable = function() { return global._randomArtifactTable; }
+
 /*if (window_get_fullscreen()=1) and (settings_fullscreen=0){
     window_set_fullscreen(false);
     window_old=string(window_get_x())+"|"+string(window_get_y())+"|"+string(window_get_width())+"|"+string(window_get_height())+"|";
