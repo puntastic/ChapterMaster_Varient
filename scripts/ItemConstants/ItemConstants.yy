@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Constants",
-    "path": "folders/Scripts/Constants.yy",
+    "name": "Items",
+    "path": "folders/Scripts/Items.yy",
   },
 }
