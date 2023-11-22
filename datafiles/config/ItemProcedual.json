@@ -1,0 +1,63 @@
+[
+	{"name": "Unknown", "allowed": ["masterwork"] },
+	{
+		"name": "Ranged", 
+		"names": ["Bolter", "Plasma Pistol", "Plasma Gun"],
+		"allowed": 
+			[
+				["masterwork"],
+				["scope"],
+				["twinLinked"],
+				["purity seals"]
+			]
+	},
+	{
+		"name": "Melee", 
+		"names": 
+		[
+			"Storm Shield",
+			"Boarding Shield",
+			"Power Sword",
+			"Power Spear",
+			"Power Axe",
+			"Power Fist",
+			"Lightning Claw", 
+			"Relic Blade", 
+			"Combat Knife",
+			"Chainsword",
+			"Chainaxe",  
+			"Eviscerator",
+			"Power Weapon",
+			"Lascutter",
+			"Chainfist",
+			"Force Weapon",
+			"Thunder Hammer", 
+			"Close Combat Weapon"
+		],
+		"allowed": 
+			[
+				["masterwork"],
+				["purity seals"]
+			]
+	},
+	{
+		"name": "Blt", 
+		"allowed": 
+			[
+				["masterwork"],
+				["scope"],
+				["twinLinked"],
+				["integrated(Sarissa)"],
+				["underslung(Bolter)", "underslung(Flamer)", "underslung(Meltagun)"]
+			]
+	},
+	{
+		"name": "Armor",
+		"names": ["Power Armor", "Terminator Armor", "Dreadnought Armor"],
+		"allowed": 
+		[
+			["masterwork"],
+			["purity seals"]
+		]
+	}
+]

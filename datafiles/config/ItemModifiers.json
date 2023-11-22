@@ -1,0 +1,46 @@
+{
+	"template" : 
+	[
+		{ "operation": "description", "value": "Description here", "conditions": { "where": "any", "of": [{"name": "handsMelee", "is": ">", "value": 0}] } }
+	],
+	"purity seals":
+	[
+		{ "operation": "description", "value": "seals of approval" },
+		{ "operation": "multiply", "target": "armor", "value": 1.1 },
+		{ "operation": "multiply", "target": "attack", "value": 1.1 },
+		{ "operation": "multiply", "target": "cost", "value": 1.1}
+	],
+	"masterwork": 
+	[
+		{ "operation": "description", "value": "masterwork" },
+		{ "operation": "trait remove", "target": "overheat"},
+		{ "operation": "multiply", "target": "armor", "value": 1.5 },
+		{ "operation": "multiply", "target": "attack", "value": 1.5 },
+		{ "operation": "multiply", "target": "cost", "value": 1.5}
+	],
+	"twinLinked": 
+	[
+		{ "operation": "description", "value": "twin linked" },
+		{ "operation": "multiply", "target": "attack", "value": 2 },
+		{ "operation": "multiply", "target": "cost", "value": 2.5 }
+	],
+	"scope":
+	[
+		{ "operation": "description", "value": "scoped" },
+		{ "operation": "multiply", "target": "range", "value": 1.5 },
+		{ "operation": "multiply", "target": "cost", "value": 1.1 }
+	],
+	"underslung":
+	[
+		{ "operation": "multiply", "target": "ammoMax", "value": 0.5 },
+		{ "operation": "plusMinus", "target": "handsRanged", "value": -1 },
+		{ "operation": "max", "target": "handsRanged", "value": 0 },
+		{ "operation": "plusMinus", "target": "handsMelee", "value": -1},
+		{ "operation": "max", "target": "handsMelee", "value": 0 }
+	],
+	"integrated":
+	[
+		{ "operation": "multiply", "target": "handsRanged", "value": 0 },
+		{ "operation": "multiply", "target": "handsMelee", "value": 0 }
+	]
+}

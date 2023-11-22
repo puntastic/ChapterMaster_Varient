@@ -1,0 +1,99 @@
+{
+"Template": { "friendlyName": "n/a" },
+"Bolter": 
+{
+	"types" : [ "held" ],
+	"cost": 1,
+	"description": "A standard Godwyn Pattern Bolter.  This blessed weapon is used by most Adeptus Astartes.",
+	"attack": 40,
+	"range": 12,
+	"ammoMax": 15,
+	"handsRanged": 2,
+	"rapidFire": true
+},
+
+"Inferno Cannon":			{ "types": [ "none" ], "attack": 400, "penetration": -1, "range": 3.1, "splash": true, "description": "A huge, vehicle mounted flame weapon that fires with explosive force.  The resevoir is liable to explode." },
+
+"Hammer of Wrath":			{ "types": [ "none" ], "legacyName": "hammer_of_wrath", "attack": 120, "range": 1, "ammoMax": 1},
+"Sarissa":					{ "types": [ "none" ], "attack": 40, "range": 1, "splash": true, "description": "A vicious combat attachment that is attached to Bolters, in order to allow them to be used in melee combat." },
+"Bionics":					{ "types": [ "none" ], "cost": 1, "description": "Restores 30HP" },
+
+"Company Standard":			{ "types": [ "none" ], "shortName": "Standard", "attack": 20, "range": 1, "handsRanged": 1, "splash": true, "description": "A banner that represents the honour of a particular company and will bolster the morale abilities of nearby Space Marines." },
+
+"Storm Shield":				{ "cost": 1, "types": [ "none" ], "armor": 8, "handsMelee": 1, "handsRanged": 1, "statMultiplyer": {"healthMax": 30}, "description": "A powered shield that must be held with a hand.  While powered by the marines armor it shimmers with blue energy." },
+"Boarding Shield":			{ "cost": 1, "types": [ "none" ], "armor": 4, "handsMelee": 1, "statMultiplyer": {"healthMax": 30}, "description": "Used in siege or boarding operations, this shield offers additional protection.  It may be used with a 2-handed ranged weapon." },
+"Power Sword":				{ "types": [ "held" ], "cost": 1,  "attack": 120, "range": 1, "handsMelee": 1, "splash": true, "description": "A preeminent type of Power Weapon.  When active the blade becomes sheathed in a lethal haze of disruptive energy." },
+"Power Spear":				{ "types": [ "held" ], "cost": 1,  "attack": 130, "range": 1, "handsMelee": 1, "splash": true, "description": "" },
+"Power Axe":				{ "types": [ "held" ], "cost": 1,  "attack": 130, "range": 1, "handsMelee": 1, "splash": true, "description": "Similar to the Power Sword, this weapon can be activated to sheathe the axe-head in a lethal haze of disruptive energy." },
+"Power Fist":				{ "types": [ "held" ], "cost": 1,  "attack": 300, "range": 1, "handsMelee": 1, "splash": true, "description": "A large, metal gauntlet surrounded by an energy field.  Though large and slow it dishes out tremendous damage." },
+"Lightning Claw":			{ "types": [ "held" ], "cost": 1,  "attack": 230, "penetration": 1, "range": 1, "handsMelee": 1, "handsRanged": 1, "splash": true, "description": "Created by attaching several long, energized blades to a standard power fist.  Allows better ripping and tearing." },
+"Relic Blade":				{ "types": [ "held" ], "cost": 1,  "attack": 450, "range": 1, "handsMelee": 2, "splash": true, "description": "" },
+"Tome":						{ "types": [ "held" ], "cost": 1,  "handsMelee": 1, "handsRanged": 1, "description": "" },
+"Combat Knife":				{ "types": [ "held" ], "cost": 1, "attack": 40, "range": 1, "handsMelee": 1,  "description": "More of a sword than knife proper, this tough and thick blade becomes a deadly weapon in the hand of an Astartes." },
+"Chainsword":				{ "types": [ "held" ], "cost": 1, "attack": 60, "range": 1, "handsMelee": 1, "splash": true, "description": "A standard Chainsword.  It is popular among Assault Marines due to the raw power and anti-armor capabilities." },
+"Chainaxe":					{ "types": [ "held" ], "attack": 80, "range": 1, "handsMelee": 1, "splash": 1, "description": "A weapon most frequently seen in the hands of Chaos, this Chainaxe uses motorized chainsaw teeth to maim and tear." },
+"Eviscerator":				{ "types": [ "held" ], "attack": 160, "range": 1, "handsMelee": 2, "splash": 1, "description": "An obscenely large Chainsword, this two-handed weapon can carve through flesh and plasteel with equal ease." },
+"Eldar Power Sword":		{ "types": [ "held" ], "attack": 150, "range": 1, "handsMelee": 1, "splash": 1, "description": "?What's mon-keigh like you doing reading a description like this?" },
+"Power Weapon":				{ "types": [ "held" ], "attack": 120, "range": 1, "handsMelee": 1, "splash": 1, "description": "A large, metal gauntlet surrounded by an energy field.  Though large and slow it dishes out tremendous damage." },
+"Lascutter":				{ "types": [ "held" ], "attack": 100, "penetration": 1, "range": 1, "handsMelee": 1, "handsRanged": 1, "description": "Origonally industrial tools used for breaking through bulkheads, this laser weapon is devastating in close combat." },
+"Chainfist":				{ "types": [ "held" ], "attack": 300, "penetration": 1, "range": 1, "handsMelee": 1, "description": "Created by mounting a chainsword to a power fist, this weapon is easily able to carve through armored bulkheads." },
+"Force Weapon":				{ "types": [ "held" ], "attack": 400, "range": 1, "handsMelee": 1, "splash": 1, "psychic": true, "description": "An advanced, psychically-attuned close combat weapon that is only fully effective in the hands of a psyker." },
+"Thunder Hammer":			{ "types": [ "held" ], "attack": 300, "penetration": 1, "range": 1, "splash": true, "handsMelee": 1, "minXP": 90, "description": "This weapon unleashes a massive, disruptive field on impact.  Only experienced marines can use Thunder Hammers." },
+"Close Combat Weapon":		{ "types": [ "held" ], "attack": 200, "penetration": 1, "range": 1, "handsMelee": 1, "requires": [ "Dreadnaught" ], "integrated": ["Heavy Flamer"], "description": "While a variety of melee weapons are used by dreadnoughts, this power fist with flamer is the most common." },
+"CCW Heavy Flamer":		{ "types": [ "held" ], "attack": 250, "penetration": -1, "range": 2.1, "ammoMax": 6, "splash": 1, "requires": [ "Dreadnaught" ], "integrated": ["Heavy Flamer"], "description": "While a variety of melee weapons are used by dreadnoughts, this power fist with flamer is the most common." },
+
+"Plasma Pistol":			{ "types": [ "held" ], "cost": 1,  "attack": 70, "range": 3, "handsMelee": 1, "overheat": { "chance": 0.1, "damagePercent": 1}, "description": "" },
+"Plasma Gun":				{ "types": [ "held" ], "cost": 1,  "attack": 140, "range": 10, "handsMelee": 1, "overheat": { "chance": 0.1, "damagePercent": 1}, "rapidFire": true, "description": "A 2-handed firearm that launches bolts of plasma. They are considered both sacred and dangerous, occasionally overheating." },
+"Archeotech Laspistol":		{ "types": [ "held" ], "cost": 1, "attack": 120, "range": 3.1, "handsRanged": 1, "description": "Known as a Lasrod or Gelt Gun, this pistol is an ancient design of Laspistol with much greater range and power." },
+"Bolt Pistol":				{ "types": [ "held" ], "attack": 35, "range": 3.1, "handsMelee": 1, "ammoMax": 18, "description": "A smaller, more compact version of the venerable Boltgun. Standard Godwyn pattern." },
+"Webber":					{ "types": [ "held" ], "attack": 40, "range": 4.1, "handsRanged": 2, "ammoMax": 5, "description": "" },
+"Heavy Bolter":				{ "types": [ "held" ], "attack": 160, "range": 16, "handsRanged": 2, "ammoMax": 20, "rapidFire": true, "description": "An enormous Boltgun. This weapon can fire a hail of powerful, armor-piercing bolts at the enemy." },
+"Storm Bolter":				{ "types": [ "held" ], "attack": 60, "range": 8, "handsRanged": 2, "ammoMax": 10, "rapidFire": true, "description": "Compact, and double barreled, this bolt weapon is inaccurate but grants an enormous amount of firepower." },
+"Flamer":					{ "types": [ "held" ], "attack": 160, "penetration": -1, "range": 2.1, "handsRanged": 2, "ammoMax": 4, "splash": 1, "description": "Blackened at the tip, this weapon unleashes a torrent of burning promethium- all the better to cleanse sin and impurity with." },
+"Incinerator":				{ "types": [ "held" ], "attack": 200, "range": 2.1, "handsRanged": 2, "ammoMax": 4, "splash": 1, "bane": { "daemon": 2 }, "description": "This flamer weapon includes special promethium and sacred oils.  It is particularly effective against Daemons and their ilk." },
+"Heavy Flamer":				{ "types": [ "held" ], "attack": 250, "penetration": -1, "range": 2, "handsRanged": 2, "ammoMax": 6, "description": "A much larger and bulkier flamer.  Few armies carry them on hand, instead choosing to mount them to vehicles." },
+"Meltagun":					{ "types": [ "held" ], "attack": 200, "penetration": 1, "range": 2.1, "handsRanged": 2, "ammoMax": 4, "description": "A relatively quiet weapon, this gun vaporizes flesh and armor alike.  Due to heat dissipation it has only a short range." },
+"Multi-Melta":				{ "types": [ "held" ], "attack": 300, "penetration": 1, "range": 4.1, "handsRanged": 2, "ammoMax": 6, "description": "Though bearing longer range than the Meltagun, this weapon's great size usually restricts it to vehicles." },
+"Infernus Pistol":			{ "types": [ "held" ], "attack": 100, "penetration": 1, "range": 2.1, "handsRanged": 1, "ammoMax": 4, "description": "" },
+"Sniper Rifle":				{ "types": [ "held" ], "attack": 60, "range": 25, "handsRanged": 2, "ammoMax": 20, "description": "Fires a solid shell and boasts powerful telescopic sights, allowing the user to target enemy weak points and distant foes." },
+"Assault Cannon":			{ "types": [ "held" ], "attack": 170, "range": 18, "handsRanged": 2, "ammoMax": 10, "rapidFire": 1, "description": "A heavy, rotary auto-cannon frequently used by Dreadnoughts and Terminators.  Has an incredible rate of fire." },
+"Autocannon":				{ "types": [ "held" ], "attack": 140, "range": 14, "handsRanged": 1, "ammoMax": 10, "rapidFire": 1, "description": "A rapid-firing weapon able to use a wide variety of ammunition, from mass-reactive explosive to solid shells." },
+"Missile Launcher":			{ "types": [ "held" ], "attack": 200, "range": 14, "handsRanged": 2, "ammoMax": 4, "splash": 1,  "description": "This heavy weapon is capable of firing either armor-piercing or fragmentation rockets.  Has low ammunition Count." },
+"Lascannon":				{ "types": [ "held" ], "attack": 200, "penetration": 1, "range": 20, "handsRanged": 2, "ammoMax": 8, "description": "A formidable laser weapon, this lascannon can pierce most vehicle or power armor from a tremendous range." },
+"Conversion Beam Projector":{ "types": [ "held" ], "attack": 100, "range": 20, "handsRanged": 1, "rapidFire": 1, "description": "" },
+
+"Choppa":				{ "cost": 1, "types": [ "held" ], "attack": 28, "range": 1, "handsMelee": 1, "splash": true, "description": "" },
+"Snassgun":				{ "cost": 1, "types": [ "held" ], "attack": 80, "range": 1, "handsMelee": 1, "rapidFire": true, "description": "" },
+"Shuriken Pistol":		{ "cost": 1, "types": [ "held" ], "attack": 25 , "range": 25, "rapidFire": true, "description": "" },
+"Ranger Long Rifle":	{ "cost": 1, "types": [ "held" ], "attack": 60, "range": 25 , "handsRanged": 2, "description": "" },
+"Hellgun":				{ "cost": 1, "types": [ "held" ], "attack": 30, "range": 6.1, "ammoMax": 10, "handsRanged": 2, "description": "?A hell of a gun" },
+"Hellrifle":			{ "cost": 1, "types": [ "held" ], "attack": 150,"penetration": 1, "range": 9, "handsRanged": 2, "description": "Normally used by Radical Inquisitors, it appears an antiquated rifle but fires razor-sharp shards of Daemonic matter." },
+
+"Ork Armor":		{ "shortName": "Orky", "cost": 1, "types": [ "armor" ], "armor": 15, "description": "" },
+"Scout Armor":		{ "shortName": "Scout", "cost": 1, "types": [ "armor" ], "armor": 8, "description": "A non-powered suit made up of carapace armor and ballistic nylon.  Includes biohazard shielding, nutrient feed, and camoflauge." },
+"MK3 Iron Armor":	{ "shortName": "MK3", "cost": 1, "types": [ "armor" ], "armor": 20,  "rangedMultiplier": 0.9, "description": "An ancient set of Armorum Ferrum.  Has thicker armor plating but the added weight slows down the wearer." },
+"MK4 Maximus":		{ "shortName": "MK4", "cost": 1, "types": [ "armor" ], "armor": 18, "rangedMultiplier": 1.05, "meleeMultiplier": 1.05, "description": "Armor dating to the end of the Great Crusade.  Often considered the ultimate Space Marine armor.  The components are no longer reproducable." },
+"MK6 Corvus":		{ "shortName": "Mk6", "cost": 1, "types": [ "armor" ], "armor": 18, "rangedMultiplier": 1.1, "description": "Relatively old beakie armor, sleek as can be.  Boosted olfactory and auditory sensors increase the ranged accuracy of the wearer." },
+"Mk8 Errant":		{ "shortName": "MK8", "cost": 1, "types": [ "armor" ], "armor": 19, "description": "Highly modified MK7, this armor has additional protection along the neck and cables.  It is oft worn as a symbol of high rank." },
+"Power Armor":		{ "shortName": "Power", "cost": 1, "types": [ "armor" ], "armor": 19, "description": "A suit of Adeptus Astartes power armor.  The Mark can no longer be determined- it appears to be a combination of several types."},
+"Artificer Armor":	{ "shortName": "Artificer", "cost": 1, "types": [ "armor" ], "armor": 35, "meleeMultiplier": 1.1, "description": "Heavily modified by the chapter artificers, and decorated without compare, this ancient Power Armor is beyond priceless."},
+"Terminator Armor":	{ "shortName": "Terminator", "cost": 1, "types": [ "armor" ], "armor": 40, "meleeMultiplier": 1.2, "rangedMultiplier": 0.9, "incompatible": ["Jump Pack"], "description": "The toughest and most powerful armor designed by humanity.  Only the most veteran of Astartes are allowed to wear these."},
+"Tartaros":			{ "shortName": "Tartaros", "cost": 1, "types": [ "armor" ], "armor": 44, "meleeMultiplier": 1.2, "rangedMultiplier": 0.94, "incompatible": ["Jump Pack"], "description": "Even more advanced than the Indomitus Terminator Armor, this upgraded armor offer greater mobility at no cost to protection."},
+"Dreadnaught Armor":{ "legacyName": "Dreadnaught", "shortName": "Dreadnaught", "cost": 1, "types": [ "armor" ], "armor": 40, "incompatible": ["Jump Pack"], "description": "A massive war-machine that can be piloted by a honored Space Marine, who otherwise would have fallen in combat."},
+
+
+"Jump Pack":		{ "cost": 1, "types": [ "back" ], "damageTakenMultiplier": 0.9, "jumpPack": true, "incompatible": [ "Bike", "Terminator Armor", "Tartaros", "Dreadnaught" ], "integrated": "Hammer of Wrath", "description": "A back mounted device containing turbines or jets powerful enough to lift even a user in Power Armour." },
+"Plasma Bomb":		{ "cost": 1, "types": [ "back" ], "descriptionShort": "Destroys destructibles", "description": "A special plasma charge, this bomb can be used to seal underground caves or Destroy enemy structures." },
+"Exterminatus":		{ "cost": 1, "types": [ "back" ], "descriptionShort": "Destroys planets", "description": "A special plasma charge, this bomb can be used to seal underground caves or Destroy enemy structures." },
+
+
+"Psychic Hood":			{ "shortName": "hood", "cost": 1, "types": [ "misc" ], "perilsMultiplyer": 0.5, "description": "An arcane hood that protects the psychically trained from enemy psychic powers and enhances their control." },
+"Narthecium":			{ "types": [ "misc" ], "medkit": true ,"description": "An advanced medical field kit, these allow those medically trained to heal or recover Gene-Seed from fallen marines." },
+"Rosarious":			{ "types": [ "misc" ],  "damageTakenMultiplier": 0.67, "incompatible": ["Iron Halo"], "description": "Also called the 'Soul's Armor', this amulet has a built-in, powerful shield generator.  They are an icon of the Imperial Creed."},
+"Iron Halo":			{ "types": [ "misc" ],  "damageTakenMultiplier": 0.67, "statPlusMinus": {"healthMax": 20}, "incompatible": ["Rosarious"], "description": "An ancient artifact, these powerful conversion field generators are granted to high ranking battle brothers or heroes.  Bearers are oft looked to for guidance." },
+"Servo Arms":			{ "types": [ "back" ], "repair": 1, "extraHands": { "total": 1, "handsRanged": 1, "handsMelee": 1}, "description": "A pair of powerful, mechanical arms.  They include several tools that allow trained marines to repair vehicles rapidly." },
+"Master Servo Arms":	{ "types": [ "back" ], "repair": 2, "extraHands": { "total": 1, "handsRanged": 1, "handsMelee": 1},	"description": "This master servo harness includes additional mechanical arms and tools, allowing a greater capacity and rate of repairs." },
+
+
+"Whirlwind Missile Launcher":	{ "types": [ "none" ], "legacyName": "Whirlwind Missiles", "attack": 250, "range": 20 }
+}
