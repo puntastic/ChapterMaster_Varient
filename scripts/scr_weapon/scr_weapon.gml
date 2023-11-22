@@ -481,38 +481,8 @@ function scr_weapon(argument0, argument1, argument2, argument3, argument4, argum
 	            // if (arp>0) then arp=round(arp*1.15);
 	        }
 
-	        if (instance_exists(obj_shop)){
-	            if (atta>0){
-	                obj_shop.tooltip_weapon=1;
-	                obj_shop.tooltip_stat1=atta;
-	                obj_shop.tooltip_stat2=arp;
-	                obj_shop.tooltip_stat3=max(ranged_hands,melee_hands);
-	                obj_shop.tooltip_stat4=amm;
-
-	                if (rang<=1.1){
-	                    obj_shop.tooltip_other="Melee";
-	                    if (spli=1) then obj_shop.tooltip_other+=", Splash";
-	                }
-	                if (rang>1.1){
-	                    obj_shop.tooltip_other=string(round(rang))+" Range";
-	                    if (spli=1) then obj_shop.tooltip_other+=", Rapid Fire";
-	                }
-
-	                if (arp=-1) then obj_shop.tooltip_other+=", Low Penetration";
-	                if (arp=1) then obj_shop.tooltip_other+=", Armour Piercing";
-
-	            }
-	            if (atta=0) and (statt=0){// Held something
-	                obj_shop.tooltip_weapon=2;
-	                obj_shop.tooltip_other=spe_descr;
-	            }
-	            if (atta=0) and (melee_hands+ranged_hands=0) and (statt>0){// Armour
-	                obj_shop.tooltip_weapon=3;
-	                obj_shop.tooltip_stat1=statt;
-	                obj_shop.tooltip_other=spe_descr;
-	            }
-	        }
-
+	        if (instance_exists(obj_shop)){ scr_weapon_populate_shop(atta, arp, ranged_hands, melee_hands, amm, rang, statt, spe_descr); }
+			
 	        if (!instance_exists(obj_shop)) and (!instance_exists(obj_ncombat)) and (((obj_controller.menu=1) and (obj_controller.managing>0)) or (obj_controller.menu=13)){
 	            // 0.6
 	            menu_artifact_type=4;
@@ -762,4 +732,55 @@ function scr_weapon(argument0, argument1, argument2, argument3, argument4, argum
 	}
 
 
+}
+
+
+
+function scr_weapon_populate_shop(atta, arp, ranged_hands, melee_hands, amm, rang, statt, spe_descr)
+{
+	if (!instance_exists(obj_shop)) { return; }
+	
+	if(atta == 0)
+	{
+		if(statt == 0) // Held something
+		{
+			obj_shop.tooltip_weapon=2;
+			obj_shop.tooltip_other=spe_descr;
+			
+			return;
+		}
+		
+		if(melee_hands + ranged_hands == 0) //Armour
+		{
+			obj_shop.tooltip_weapon=3;
+			obj_shop.tooltip_stat1=statt;
+			obj_shop.tooltip_other=spe_descr;
+			
+			return;
+		}
+		
+		return;
+	}
+	
+	//if(atta > 0)	//Weapon
+	obj_shop.tooltip_weapon=1;
+	obj_shop.tooltip_stat1=atta;
+	obj_shop.tooltip_stat2=arp;
+	obj_shop.tooltip_stat3=max(ranged_hands,melee_hands);
+	obj_shop.tooltip_stat4=amm;
+	
+	if (rang<=1.1)
+	{
+	    obj_shop.tooltip_other="Melee";
+	    if (spli=1) then obj_shop.tooltip_other+=", Splash";
+	}
+	
+	if (rang>1.1)
+	{
+	    obj_shop.tooltip_other=string(round(rang))+" Range";
+	    if (spli=1) then obj_shop.tooltip_other+=", Rapid Fire";
+	}
+	
+	if (arp=-1) then obj_shop.tooltip_other+=", Low Penetration";
+	if (arp=1) then obj_shop.tooltip_other+=", Armour Piercing";	        
 }
