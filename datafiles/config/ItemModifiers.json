@@ -42,5 +42,19 @@
 	[
 		{ "operation": "multiply", "target": "handsRanged", "value": 0 },
 		{ "operation": "multiply", "target": "handsMelee", "value": 0 }
+	],
+	"mnr": [ { "operation": "multiply", "target": "attack", "value": 0.85 } ],
+	"voi": [ { "operation": "multiply", "target": "attack", "value": 1.2 } ],
+	"ada": [ { "operation": "multiply", "target": "attack", "value": 1.1 } ],
+	"dae": 
+	[ 
+		{ "operation": "multiply", "target": "attack", "value": 1.5 },
+		{ "operation": "min", "target": "ammoMax", "value": -1 }
+	],
+	"dub": 
+	[ 
+		{ "operation": "multiply", "target": "attack", "value": 1.5 }, 
+		{ "operation": "plusMinus", "target": "handsRanged", "value": 1 },
+		{ "operation": "plusMinus", "target": "handsMelee", "value": 1 }
 	]
 }

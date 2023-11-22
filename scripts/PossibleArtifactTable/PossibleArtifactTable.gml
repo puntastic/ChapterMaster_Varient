@@ -15,10 +15,12 @@ function PossibleArtifactTable(log, loadedStruct) : LookupTable(log) constructor
 			{
 				var currentName = current.names[i];
 				var currentPossible = new ArtifactTemplate(currentName, current.allowed);
-				group._lookup.Add(currentName, currentPossible);		
+				group._TryAdd(currentName, currentPossible);
+				//group._lookup.Add(currentName, currentPossible);		
 			}
 			
-			_lookup.Add(current.name, group);		
+			_TryAdd(current.name, group);
+			//_lookup.Add(current.name, group);		
 		}
 
 		function GetGroup(groupName)
@@ -26,9 +28,10 @@ function PossibleArtifactTable(log, loadedStruct) : LookupTable(log) constructor
 			if(!KeyExists(groupName)) { throw("not found"); }
 			
 			var group = GetValue(groupName);
-			if(!IsInstanceOf(group, PossibleArtifactTable)) { throw ("Not table"); }
+			//if(!IsInstanceOf(group, PossibleArtifactTable)) { throw ("Not table"); }
 			
-			return group._lookup.GetAllValues();
+			return ds_map_values_to_array(group._lookup);
+			//return group._lookup.GetAllValues();
 		}
 	#endregion
 	
@@ -52,7 +55,8 @@ function PossibleArtifactTable(log, loadedStruct) : LookupTable(log) constructor
 				}
 				
 				var currentPossible = new ArtifactTemplate(current.name, current.allowed);
-				_lookup.Add(current.name, currentPossible);		
+				_TryAdd(current.name, currentPossible);
+				//_lookup.Add(current.name, currentPossible);		
 			}
 		}
 		

@@ -2,6 +2,7 @@ function ArtifactTemplate(name, allowed) constructor
 {
 	_name = undefined;
 	_allowed = undefined;
+	
 	function GetItemName() { return _name; }
 	function GetAllowed() { return _allowed; }
 	function PickModifier()
@@ -11,7 +12,8 @@ function ArtifactTemplate(name, allowed) constructor
 		
 		var picked = _allowed[random_range(0, array_length(_allowed))];
 		
-		if(IsInstanceOf(picked, TYPE_STRING)) { return picked; }
+		if(is_string(picked)) { return picked; }
+		//if(IsInstanceOf(picked, TYPE_STRING)) { return picked; }
 		if(array_length(picked) == 0) { return undefined; }
 		if(array_length(picked) == 1) { return picked[0]; }
 		

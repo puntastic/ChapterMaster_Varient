@@ -13,8 +13,8 @@ function ItemWrapper(item = undefined) constructor
 	ammo				= undefined;//is_undefined(argument[6]) ? -1  : argument[6];
 	rangedHands			= undefined;//is_undefined(argument[7]) ? 0 : argument[7];
 	meleeHands			= undefined;//is_undefined(argument[8]) ? 0 : argument[8];
-	armor				= undefined;//is_undefined(argument[9]) ? 0 : argument[9];	
-	isArmor				= undefined;//is_undefined(argument[10]) ? 0 : argument[10];
+	armour				= undefined;//is_undefined(argument[9]) ? 0 : argument[9];	
+	isarmour				= undefined;//is_undefined(argument[10]) ? 0 : argument[10];
 	split				= undefined;//is_undefined(argument[11]) ? 0 : argument[11]; //split(?) written as 'spli' in the original code. Seemingly 'splash weapon'
 	specialDescription	= undefined;//is_undefined(argument[12]) ? "" : argument[12];
 	
@@ -28,6 +28,10 @@ function ItemWrapper(item = undefined) constructor
 	#endregion
 	
 	#region Constructor
+		// todo: combat code has a LOT of looping. So this needs to be a direct pass through to
+		// the underlying item rather than populating local variables
+		//
+		// or, at the very least, given the presumed invarience of item, cached somewhere
 		function _ItemWrapper(item)
 		{
 			_item = Validate(1, item, [Item/*, Artifact*/], true) ?? new Item();
@@ -44,10 +48,10 @@ function ItemWrapper(item = undefined) constructor
 			ammo = _item.GetProperty(ITEM_AMMO_MAX) ?? -1;
 			rangedHands = _item.GetProperty(ITEM_HANDS_RANGED) ?? 0;
 			meleeHands = _item.GetProperty(ITEM_HANDS_MELEE) ?? 0;
-			armor = _item.GetProperty(ITEM_ARMOR) ?? 0;
+			armour = _item.GetProperty(ITEM_armour) ?? 0;
 			specialDescription = "";//"N/A";
 			penetration = _item.GetProperty(ITEM_PENETRATION) ?? 0;
-			isArmor = IsType(ITEM_TYPE_ARMOR);
+			isarmour = IsType(ITEM_TYPE_armour);
 			
 	
 			split = 0; 

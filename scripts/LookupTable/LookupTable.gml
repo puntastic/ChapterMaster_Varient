@@ -1,13 +1,17 @@
+//todo: this and children thereof should probably be modified to use the load_json_data()
+//methods of the project they're being imported into, for consistency sake.
 function LookupTable(log, containedType = undefined, loadedStruct = undefined) constructor
 {
 	#region Variables
 		_log = log;
-		_lookup = new Map();
+		_lookup = ds_map_create();//new Map();
 	#endregion
 	
 	#region Functions
-		function KeyExists(name) { return _lookup.KeyExists(name); } 
-		function GetValue(name) { return _lookup.GetValue(name); }
+		function _TryAdd(key, value) { return ds_map_add(_lookup, key, value); }
+		
+		function KeyExists(name) { return !is_undefined(ds_map_find_value(_lookup, name));/*_lookup.KeyExists(name);*/ } 
+		function GetValue(name) { return ds_map_find_value(_lookup, name);/*_lookup.GetValue(name); */}
 		function GetAll(names)
 		{
 			Validate(1, names, TYPE_ARRAY, false);
@@ -21,7 +25,7 @@ function LookupTable(log, containedType = undefined, loadedStruct = undefined) c
 			
 			return found;
 		}
-		function Clear() { _items.Clear(); }
+		//function Clear() { _items.Clear(); }
 	#endregion
 	
 	#region Constructor
@@ -39,7 +43,7 @@ function LookupTable(log, containedType = undefined, loadedStruct = undefined) c
 			}*/
 		}
 		
-		if(is_instanceof(self, LookupTable)) { _LookupTable(containedType, loadedStruct); }
+		if(typeof(self) == typeof(LookupTable)) { _LookupTable(containedType, loadedStruct); }
 	#endregion
 	
 	#region Destructor
@@ -49,7 +53,16 @@ function LookupTable(log, containedType = undefined, loadedStruct = undefined) c
 			if(_isDestroyed) { return; }
 			_isDestroyed = true;
 			
-			if(_lookup != undefined) { _lookup.Destroy(deepScan); }
+			
+			if(is_undefined(_lookup))  { return; }
+			if(!ds_exists(_lookup, ds_type_map))
+			{
+				_lookup = undefined; 
+				return;
+			}
+				/*_lookup.Destroy(deepScan)*/;
+			ds_map_destroy(_lookup);
+			_lookup = undefined;
 		}
 	#endregion
 }

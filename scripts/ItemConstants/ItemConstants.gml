@@ -17,7 +17,7 @@
 				case ITEM_ATTACK:
 				case ITEM_AMMO_MAX:
 				case ITEM_RANGE:
-				case ITEM_ARMOR:
+				case ITEM_armour:
 				case ITEM_HANDS_RANGED:
 				case ITEM_HANDS_MELEE:
 				case ITEM_SPECIAL_DESCRIPTION:
@@ -63,7 +63,7 @@
 	#macro ITEM_ATTACK "attack"
 	#macro ITEM_AMMO_MAX "ammoMax" //-1 or undefined for unlimited.
 	#macro ITEM_RANGE "range" // 1 for melee range.
-	#macro ITEM_ARMOR "armor"
+	#macro ITEM_armour "armour"
 	#macro ITEM_HANDS_RANGED "handsRanged"//how many hands it takes up in melee/range. //todo: revisit
 	#macro ITEM_HANDS_MELEE "handsMelee"
 	#macro ITEM_SPECIAL_DESCRIPTION "specialDescription" //todo: legacy/defunct
@@ -78,7 +78,7 @@
 	#macro ITEM_REQUIRES "requires"
 	#macro ITEM_SPLASH "splash"
 	#macro ITEM_RAPID_FIRE "rapidFire"
-	#macro ITEM_OVERHEAT "overheat" //{ "chance": 0-1, "damagePercent": 0-1}. Reduced by armor by default
+	#macro ITEM_OVERHEAT "overheat" //{ "chance": 0-1, "damagePercent": 0-1}. Reduced by armour by default
 	#macro ITEM_UNKNOWN "unknown"
 	#macro ITEM_MELEE_MULTIPLIER "meleeMultiplier"
 	#macro ITEM_RANGED_MULTIPLIER "rangedMultiplier"
@@ -91,7 +91,7 @@
 	#macro ITEM_REPAIR "repair"
 #endregion
 
-//Slots that an item can be assiend to.
+//Slots that an item can be assiend to. or modifiers thereof
 #region Equip Regions
 	#region Validation
 		//todo: I hate putting a function in globals, yet this seems to be where it belongs
@@ -100,13 +100,14 @@
 		{
 			switch(string_lower(region))
 			{
-				case ITEM_TYPE_ARMOR:
+				case ITEM_TYPE_armour:
 				case ITEM_TYPE_HELD:
 				case ITEM_TYPE_BACK:
 				case ITEM_TYPE_UNKNOWN: //technically a 'known' region
 				case ITEM_TYPE_NONE:
 				case ITEM_TYPE_MISC:
 				case ITEM_TYPE_SPECIAL:
+				case ITEM_TYPE_TERMINATOR:
 					return true;
 				}
 		
@@ -116,7 +117,8 @@
 
 		function IS_VALID_ITEM_TYPE_ARRAY(regionArray, throwIfInvalid = false)
 		{
-			if(!IsInstanceOf(regionArray, TYPE_ARRAY)) { throw(InvalidArgException(1, regionArray, TYPE_ARRAY)); }
+			if(!is_array(regionArray)) { throw(InvalidArgException(1, regionArray, TYPE_ARRAY)); } 
+			//if(!IsInstanceOf(regionArray, TYPE_ARRAY)) { throw(InvalidArgException(1, regionArray, TYPE_ARRAY)); }
 	
 			for(var i = 0; i < array_length(regionArray); i++)
 			{
@@ -127,7 +129,8 @@
 		}
 	#endregion
 	
-	#macro ITEM_TYPE_ARMOR "armor"
+	#macro ITEM_TYPE_TERMINATOR "terminator"
+	#macro ITEM_TYPE_armour "armour"
 	#macro ITEM_TYPE_HELD "held"
 	#macro ITEM_TYPE_BACK "back"
 	#macro ITEM_TYPE_UNKNOWN "unknown"

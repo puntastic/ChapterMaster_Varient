@@ -3,8 +3,8 @@ function ItemModifier(name, fromStruct = undefined) constructor
 	#region Variables
 		_name = undefined;
 		_operations = undefined;
-	
 	#endregion
+	
 	#region Functions
 		function GetOperations() { return _operations; }
 		function GetOperationsFiltered(targetName)
@@ -18,9 +18,10 @@ function ItemModifier(name, fromStruct = undefined) constructor
 				array_push(found, current);
 			}
 			
-		return found;
+			return found;
 		}
 	#endregion
+	
 	#region Constructor
 		function _ItemModifier(name, fromStruct)
 		{

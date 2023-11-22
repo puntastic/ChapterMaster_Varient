@@ -21,7 +21,8 @@ function ItemModifierTable(log, loadedStruct) : LookupTable(log) constructor
 			for(var i = 0; i < array_length(names); i++)
 			{
 				var currentItem = new ItemModifier(names[i], variable_struct_get(loadedStruct, names[i]));
-				_lookup.Add(names[i], currentItem);			
+				_TryAdd(names[i], currentItem);
+				//_lookup.Add(names[i], currentItem);			
 			}
 		}
 		

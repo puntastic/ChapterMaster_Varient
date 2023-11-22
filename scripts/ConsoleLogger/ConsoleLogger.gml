@@ -1,4 +1,4 @@
-function Logging_ConsoleLogger(logLevel = LOGGING_LEVEL_DEBUG) : ALoggerBase(logLevel) constructor
+function ConsoleLogger(logLevel = LOGGING_LEVEL_DEBUG) : ALoggerBase(logLevel) constructor
 {
 	#region Variables
 		//_logLevel = LOGGING_LEVEL_DEBUG;

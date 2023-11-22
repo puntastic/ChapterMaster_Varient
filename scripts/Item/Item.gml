@@ -3,18 +3,19 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 	#region Variables
 		_log = undefined;
 		_name = undefined;
-		_properties = undefined;
+		_properties = undefined; //originally a wrapper struct for ds_map, now just the id
 		_modifierNames = undefined; //set as a string array if this is an item modified from the base template
 		_modifiers = undefined;
 	#endregion
 	
 	#region Functions
 		//meant to be read-only once initially created
-		function _RemoveTrait(trait) {_properties.Remove(trait); }	
+		function _RemoveTrait(trait) { ds_map_delete(_properties, trait); /*_properties.Remove(trait);*/ }	
 		function _SetTrait(trait, value) 
 		{ 
 			if(!IS_VALID_ITEM_PROPERTY(trait)) { throw(string("Invalid item trait \"{0}\" in \"{1}\"", trait, _name));}	
-			_properties.Set(trait, value); 
+			//_properties.Set(trait, value); 
+			ds_map_set(_properties, trait, value);
 		}
 		
 		function _ColateOperationsFiltered(targetName)
@@ -63,6 +64,7 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 		
 		function _ApplyAllOperationsMatching(operationName, operations)
 		{
+			//todo: optimization and/or caching
 			for(var i = 0; i < array_length(operations); i++)
 			{
 				var current = operations[i];
@@ -79,8 +81,9 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 			return GetProperty(ITEM_FRIENDLY_NAME); //'special' item probably
 		}
 		
-		function HasProperty(propertyName)  { return _properties.KeyExists(propertyName); }
-		function GetProperty(propertyName)  { return _properties.GetValue(propertyName); }
+		
+		function HasProperty(name) { return !is_undefined(ds_map_find_value(_properties, name)); } 
+		function GetProperty(name) { return ds_map_find_value(_properties, name);}
 		
 		function HasTrait(trait) { return HasProperty(trait); } //defunct, use HasPropery
 		function GetTrait(trait) { return GetProperty(trait); }	//defunct, use GetPropety
@@ -122,7 +125,10 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 		function _Item_Clone(original, modifierNames = undefined, modifiers = undefined)
 		{
 			_name = original._name;
-			_properties = new Map(original._properties);
+			//_properties = new Map(original._properties);
+			_properties = ds_map_create();
+			ds_map_copy(_properties, original._properties);
+
 			
 			_modifierNames = modifierNames;
 			_modifiers = modifiers;
@@ -133,9 +139,10 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 		function _Item(name, fromStruct, modifierNames = undefined, modifiers = undefined)
 		{	
 			_name = Validate(2, name, TYPE_STRING, true) ?? UNKNOWN;
-			Validate(3, fromStruct, [TYPE_STRUCT], true);
+			Validate(3, fromStruct, TYPE_STRUCT, true);
 			
-			_properties = new Map();
+			//_properties = new Map();
+			_properties = ds_map_create();
 			_modifierNames = modifierNames;
 			_modifiers = modifiers;
 	
@@ -153,7 +160,7 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 		
 		_log = is_undefined(log) ? new Logging_NullLogger() : log;//todo: validate
 		
-		if(IsInstanceOf(nameOrClone, Item)) {_Item_Clone(nameOrClone, modifierNames, modifiers)}
+		if(is_instanceof(nameOrClone, Item)) {_Item_Clone(nameOrClone, modifierNames, modifiers)}
 		else { _Item(nameOrClone, fromStruct, modifierNames, modifiers); }
 		
 	#endregion
@@ -166,7 +173,17 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 			if(_isDestroyed) { return; }
 			_isDestroyed = true;
 		
-			_properties.Destroy(deepScan);
+			//todo:!!!!:potential memory leak if not used correctly
+			if(is_undefined(_properties)) { return; }
+			if(!ds_exists(_properties, ds_type_map)) 
+			{
+				_properties = undefined;
+				return;
+			}
+			
+			ds_map_destroy(_properies);
+			_properties = undefined;
+			//_properties.Destroy(deepScan);
 		}
 	#endregion
 	//todo: destructor

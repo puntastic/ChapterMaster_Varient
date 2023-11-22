@@ -78,7 +78,7 @@
 	
 	function IS_VALID_CONDITIONAL_ARRAY(conditional, throwIfInvalid = false)
 	{
-		if(!IsInstanceOf(conditional, TYPE_ARRAY)) { throw(InvalidArgException(1, conditional, TYPE_ARRAY)); }
+		if(!is_array(conditional)) { throw(InvalidArgException(1, conditional, TYPE_ARRAY)); }
 	
 		for(var i = 0; i < array_length(conditional); i++)
 		{

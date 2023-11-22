@@ -1,5 +1,5 @@
 //Does nothing with inputs. Baseline skeleton
-function Logging_NullLogger(logLevel = LOGGING_LEVEL_FATAL) : ALoggerBase(logLevel) constructor
+function NullLogger(logLevel = LOGGING_LEVEL_FATAL) : ALoggerBase(logLevel) constructor
 {
 	#region Variables
 //		_logLevel = LOGGING_LEVEL_FATAL;

@@ -65,10 +65,14 @@ function ModifierOperation(operationOrStruct = ITEM_MODIFIER_DESCRIPTION, target
 			return _value;
 		}
 		
-		function Apply(itemTraits)
+		function Apply(traitMapId)
 		{
-			Validate(1, itemTraits, Map);
-			if(!IsEqual(_conditions, undefined) && !_conditions.IsTrue(itemTraits)) { return; }
+			if(is_undefined(traitMapId)) { throw("Invalid Map"); }
+			if(!ds_exists(traitMapId, ds_type_map)) { throw("Invalid Map"); }
+			
+			//Validate(1, itemTraits, Map);
+			//todo: re-implement or copy over the conditions collection
+			//if(!IsEqual(_conditions, undefined) && !_conditions.IsTrue(itemTraits)) { return; }
 			
 			switch(_operation)
 			{
@@ -76,13 +80,20 @@ function ModifierOperation(operationOrStruct = ITEM_MODIFIER_DESCRIPTION, target
 				case ITEM_MODIFIER_TRAIT_ADD:
 				case ITEM_MODIFIER_TRAIT_REMOVE:
 				case ITEM_MODIFIER_TRAIT_ADD_OR_REMOVE:
-					if(GetValue() > 0) { itemTraits.Add(_target, true); }
-					if(GetValue() < 0) { itemTraits.Remove(_target); }
+					/*if(GetValue() > 0) { itemTraits.Add(_target, true); }
+					if(GetValue() < 0) { itemTraits.Remove(_target); }*/
+					if(GetValue() > 0) { ds_map_add(traitMapId, _target, 1); }
+					if(GetValue() < 0) { ds_map_delete(traitMapId, _target); }
 					return;
 			}
 			
-			if(!itemTraits.KeyExists(_target)) { return; }			
-			itemTraits.Set(_target, GetApplyValue(itemTraits.GetValue(_target)));
+			
+			/*if(!itemTraits.KeyExists(_target)) { return; }			
+			itemTraits.Set(_target, GetApplyValue(itemTraits.GetValue(_target)));*/
+			var val = !ds_map_find_value(traitMapId, _target);
+			if(is_undefined(val)) { return; }
+			
+			ds_map_set(traitMapId, _target, val);
 		}
 		
 		function GetApplyValue(baseValue)
@@ -113,7 +124,7 @@ function ModifierOperation(operationOrStruct = ITEM_MODIFIER_DESCRIPTION, target
 			IS_VALID_ITEM_MODIFIER(operation, true);
 			_operation = operation;
 			
-			if(!IsEqual(conditions, undefined)) { _conditions = new ConditionalCollection(conditions); }
+			//if(!IsEqual(conditions, undefined)) { _conditions = new ConditionalCollection(conditions); }
 			
 			//todo: refactor into seperate related objects?
 			switch(_operation)
