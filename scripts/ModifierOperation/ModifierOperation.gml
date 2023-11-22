@@ -90,10 +90,10 @@ function ModifierOperation(operationOrStruct = ITEM_MODIFIER_DESCRIPTION, target
 			
 			/*if(!itemTraits.KeyExists(_target)) { return; }			
 			itemTraits.Set(_target, GetApplyValue(itemTraits.GetValue(_target)));*/
-			var val = !ds_map_find_value(traitMapId, _target);
+			var val = ds_map_find_value(traitMapId, _target);
 			if(is_undefined(val)) { return; }
 			
-			ds_map_set(traitMapId, _target, val);
+			ds_map_set(traitMapId, _target, GetApplyValue(val));
 		}
 		
 		function GetApplyValue(baseValue)

@@ -88,7 +88,7 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 		function HasTrait(trait) { return HasProperty(trait); } //defunct, use HasPropery
 		function GetTrait(trait) { return GetProperty(trait); }	//defunct, use GetPropety
 		
-		function IsModified() { return !IsEqual(_modifierNames, undefined); }
+		function IsModified() { return array_length(GetModifierNames()) > 0; }
 		function GetModifierNames() { return _modifierNames ?? []; }
 		
 		function Clone(modifierNames = undefined, modifiers = undefined) { return new Item(_log, self, undefined, modifierNames, modifiers); }
@@ -181,7 +181,7 @@ function Item(log = undefined, nameOrClone = undefined, fromStruct = undefined, 
 				return;
 			}
 			
-			ds_map_destroy(_properies);
+			ds_map_destroy(_properties);
 			_properties = undefined;
 			//_properties.Destroy(deepScan);
 		}

@@ -17,7 +17,7 @@
 				case ITEM_ATTACK:
 				case ITEM_AMMO_MAX:
 				case ITEM_RANGE:
-				case ITEM_armour:
+				case ITEM_ARMOUR:
 				case ITEM_HANDS_RANGED:
 				case ITEM_HANDS_MELEE:
 				case ITEM_SPECIAL_DESCRIPTION:
@@ -63,7 +63,7 @@
 	#macro ITEM_ATTACK "attack"
 	#macro ITEM_AMMO_MAX "ammoMax" //-1 or undefined for unlimited.
 	#macro ITEM_RANGE "range" // 1 for melee range.
-	#macro ITEM_armour "armour"
+	#macro ITEM_ARMOUR "armour"
 	#macro ITEM_HANDS_RANGED "handsRanged"//how many hands it takes up in melee/range. //todo: revisit
 	#macro ITEM_HANDS_MELEE "handsMelee"
 	#macro ITEM_SPECIAL_DESCRIPTION "specialDescription" //todo: legacy/defunct
@@ -100,7 +100,7 @@
 		{
 			switch(string_lower(region))
 			{
-				case ITEM_TYPE_armour:
+				case ITEM_TYPE_ARMOUR:
 				case ITEM_TYPE_HELD:
 				case ITEM_TYPE_BACK:
 				case ITEM_TYPE_UNKNOWN: //technically a 'known' region
@@ -130,7 +130,7 @@
 	#endregion
 	
 	#macro ITEM_TYPE_TERMINATOR "terminator"
-	#macro ITEM_TYPE_armour "armour"
+	#macro ITEM_TYPE_ARMOUR "armour"
 	#macro ITEM_TYPE_HELD "held"
 	#macro ITEM_TYPE_BACK "back"
 	#macro ITEM_TYPE_UNKNOWN "unknown"

@@ -30,7 +30,7 @@ function scr_weapon(argument0, argument1, argument2, argument3, argument4, argum
 	//pulling from globals to reduce refactoring needed atm.
 	var item = global
 		.GetItemTable()
-		.TryGetItem(thawep, global.GetItemModifierTable());
+		.TryGetItem(argument0, global.GetItemModifierTable());
 	var itemWrapped = item != false ? new ItemWrapper(item) : undefined;
 	
 	repeat(2){
@@ -153,6 +153,8 @@ function scr_weapon(argument0, argument1, argument2, argument3, argument4, argum
 				if(itemWrapped.rangedHands > 0) { ranged_hands--; }
 				if(itemWrapped.meleeHands > 0) { melee_hands--; }
 		}
+		
+		
 		#region termie modified
 		/* if (thawep="Storm Bolter"){atta=80;arp=0;rang=10;ranged_hands+=2;amm=10;spli=1;
 	        if (argument6!="description") and (argument6!="description_long"){
@@ -475,7 +477,7 @@ function scr_weapon(argument0, argument1, argument2, argument3, argument4, argum
 	}
 
 
-
+	if(item != false && item.IsModified()) { item.Destroy(); }
 
 
 	// End repeat(2)
@@ -593,9 +595,12 @@ function scr_is_for_first_loop(wrapped)
 	Validate(1, wrapped, ItemWrapper, true);
 	if(is_undefined(wrapped)) { return false; }
 	
-	return wrapped.IsType(ITEM_TYPE_armour) ||
-		wrapped.IsType(ITEM_TYPE_MISC) ||
-		wrapped.IsType(ITEM_TYPE_NONE);
+	if(wrapped.IsType(ITEM_TYPE_ARMOUR)) { return true; }
+	if(wrapped.IsType(ITEM_TYPE_MISC)) { return true; }
+	if(wrapped.IsType(ITEM_TYPE_NONE)) { return true; }
+	if(wrapped.IsType(ITEM_TYPE_BACK)) { return true; }
+	
+	return false;
 }
 
 function scr_weapon_populate_shop(atta, arp, spli, ranged_hands, melee_hands, amm, rang, statt, spe_descr)

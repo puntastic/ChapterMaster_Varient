@@ -89,19 +89,19 @@ function scr_add_artifact(argument0, argument1, argument2, argument3, argument4)
 
 	if (t1="Weapon"){
 	    // gold, glowing, underslung bolter, underslung flamer
-	    t5=choose("GLD","GLO","UBL","UFL");
+	  //  t5=choose("GLD","GLO","UBL","UFL");
 	    // Runes, scope, adamantium, void
-	    t4=choose("RUN","SCO","ADA","VOI");
-	    if ((t2="Power Sword") or (t2="Power Axe") or (t2="Power Spear")) and (t4="SCO") then t4="CHB";// chainblade
-	    if ((t2="Power Fist") or (t2="Power Claw")) and (t4="SCO") then t4="DUB";// doubled up
-		if (t2="Thunder Hammer") and (t4="RUN") then t4="GLO";//glowing runed
-	    if (t2="Relic Blade") and (t4="SCO") then t4="UFL";// underslung flamer
+	  //  t4=choose("RUN","SCO","ADA","VOI");
+	  //  if ((t2="Power Sword") or (t2="Power Axe") or (t2="Power Spear")) and (t4="SCO") then t4="CHB";// chainblade
+	   // if ((t2="Power Fist") or (t2="Power Claw")) and (t4="SCO") then t4="DUB";// doubled up
+		//if (t2="Thunder Hammer") and (t4="RUN") then t4="GLO";//glowing runed
+	   // if (t2="Relic Blade") and (t4="SCO") then t4="UFL";// underslung flamer
 	}
 	if (t1="Armour"){
 	    // golden filigree, glowing optics, purity seals
-	    t5=choose("GLD","GLO","PUR");
+	   // t5=choose("GLD","GLO","PUR");
 	    // articulated plates, spikes, runes, drake scales
-	    t4=choose("ART","SPI","RUN","DRA");
+	//    t4=choose("ART","SPI","RUN","DRA");
 	}
 	if (t1="Gear"){
 	    // supreme construction, adamantium, gold
@@ -125,15 +125,46 @@ function scr_add_artifact(argument0, argument1, argument2, argument3, argument4)
 	    t4=choose("HU","RO","SHI");
 	    t5=choose("ADA","JAD","BRO","RUNE");
 	}
-
+	
 	var big;big=choose(1,2);
+	if(t1=="Armor")
+	{
+		var template = GenerateArmor();
+		var name = template.GetItemName();
+		var modifiers = GenerateArtifactModifiers(template, 1);
+		
+		t2 = name;
+		t3 = array_length(modifiers) > 0 ? modifiers[0] : "";
+		t4 = array_length(modifiers) > 1 ? modifiers[1] : "";
+		t5 = array_length(modifiers) > 2 ? modifiers[2] : "";
+	}
+	
+	if(t1=="Weapon")
+	{
+		//todo: naunced
+		var picks = 1;
+		if(good) { picks++ }
+		if(big == 2 && argument1!="minor") { picks++; }
+		
+		var template = GenerateWeapon();
+		var name = template.GetItemName();
+		var modifiers = GenerateArtifactModifiers(template, picks);
+		
+		t2 = name;
+		t3 = array_length(modifiers) > 0 ? modifiers[0] : "";
+		t4 = array_length(modifiers) > 1 ? modifiers[1] : "";
+		t5 = array_length(modifiers) > 2 ? modifiers[2] : "";
+	}
+
+
+	
 	// if (big=1) or (argument1="minor") then t5="";
 	if (argument1="minor"){t4="";t5="";t3+="|mnr";}
 	if (argument1="inquisition") then t3+="|inq";
 	if ((argument1="daemonic") or (argument1="Daemonic")) and (t2!="Tome") then t3="Daemonic"+choose("1a","2a","3a","4a");
 	if ((argument1="daemonic") or (argument1="Daemonic")) and (t2="Tome") then t3="Daemonic"+choose("2a","3a","4a");
 	if (argument0="chaos_gift") then t3="|cgfDaemonic3a";
-	// show_message(string(t3));
+	// 
 
 	obj_ini.artifact[last_artifact]=t2;
 	obj_ini.artifact_tags[last_artifact]=string(t4)+"|"+string(t5)+"|"+string(t3)+"|";
@@ -151,4 +182,72 @@ function scr_add_artifact(argument0, argument1, argument2, argument3, argument4)
 	scr_recent("artifact_acquired",string(obj_ini.artifact_tags[last_artifact]),last_artifact);
 
 
+}
+
+function CheckModForDuplicate(arr, check)
+{
+	for(var i = 0; i < array_length(arr); i++)
+	{
+		if(arr[i] == check) { return true; }
+	}
+	return false;
+}
+
+function GenerateArtifactModifiers(template, picks)
+{
+	var modifiers = [];
+	
+	for(var i = 0; i < picks; i++)
+	{
+		var current = template.PickModifier();
+		if(CheckModForDuplicate(modifiers, current)) { continue; }
+		array_push(modifiers, current);
+	}
+	
+	return modifiers;
+}
+function GenerateArmor()
+{
+	//todo: allow config
+	var rollable = new RollableTable();
+	var table = global.GetRandomArtifactTable();
+
+	rollable.AddArray(table.GetGroup("Armour"));
+	/*rollable.Add(table.GetValue("Power Armor"));
+	rollable.Add(table.GetValue("Terminator Armor"));
+	rollable.Add(table.GetValue("Dreadnought Armor"));*/
+	
+	var template = rollable.Pick();
+	return template;
+}
+function GenerateWeapon()
+{
+	//todo: allow config
+	var rollable = new RollableTable();
+	var table = global.GetRandomArtifactTable();
+	//var test = table.GetValue("Bolter");
+	
+	//todo: generalize out to a config
+	rollable.AddArray(table.GetGroup("Ranged"));
+	rollable.AddArray(table.GetGroup("Melee"));
+	/*rollable.Add(table.GetValue("Bolter"));
+	rollable.Add(table.GetValue("Plasma Pistol"));
+	rollable.Add(table.GetValue("Plasma Gun"));
+	rollable.Add(table.GetValue("Power Sword"));
+	rollable.Add(table.GetValue("Power Fist"));
+	rollable.Add(table.GetValue("Relic Blade"));*/
+	
+	var template = rollable.Pick();
+	return template;
+
+	
+	//table.Add(30, 
+		/*if (t1="Weapon") and (t2=""){good=0;
+	    if (rand2<=30) and (good=0){t2="Bolter";good=1;}
+	    if (rand2<=40) and (good=0){t2="Plasma Pistol";good=1;}
+	    if (rand2<=50) and (good=0){t2="Plasma Gun";good=1;}
+	    if (rand2<=70) and (good=0){t2=choose("Power Sword","Power Axe","Power Spear","Lightning Claw");good=1;}
+	    if (rand2<=90) and (good=0){t2=choose("Power Fist","Power Fist","Lightning Claw");good=1;}
+	    if (rand2<=100) and (good=0){t2="Relic Blade";good=1;}
+	}*/
 }

@@ -48,10 +48,10 @@ function ItemWrapper(item = undefined) constructor
 			ammo = _item.GetProperty(ITEM_AMMO_MAX) ?? -1;
 			rangedHands = _item.GetProperty(ITEM_HANDS_RANGED) ?? 0;
 			meleeHands = _item.GetProperty(ITEM_HANDS_MELEE) ?? 0;
-			armour = _item.GetProperty(ITEM_armour) ?? 0;
+			armour = _item.GetProperty(ITEM_ARMOUR) ?? 0;
 			specialDescription = "";//"N/A";
 			penetration = _item.GetProperty(ITEM_PENETRATION) ?? 0;
-			isarmour = IsType(ITEM_TYPE_armour);
+			isarmour = IsType(ITEM_TYPE_ARMOUR);
 			
 	
 			split = 0; 
