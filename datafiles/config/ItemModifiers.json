@@ -6,7 +6,7 @@
 	"purity seals":
 	[
 		{ "operation": "description", "value": "seals of approval" },
-		{ "operation": "multiply", "target": "armor", "value": 1.1 },
+		{ "operation": "multiply", "target": "armour", "value": 1.1 },
 		{ "operation": "multiply", "target": "attack", "value": 1.1 },
 		{ "operation": "multiply", "target": "cost", "value": 1.1}
 	],
@@ -14,7 +14,7 @@
 	[
 		{ "operation": "description", "value": "masterwork" },
 		{ "operation": "trait remove", "target": "overheat"},
-		{ "operation": "multiply", "target": "armor", "value": 1.5 },
+		{ "operation": "multiply", "target": "armour", "value": 1.5 },
 		{ "operation": "multiply", "target": "attack", "value": 1.5 },
 		{ "operation": "multiply", "target": "cost", "value": 1.5}
 	],
@@ -43,7 +43,12 @@
 		{ "operation": "multiply", "target": "handsRanged", "value": 0 },
 		{ "operation": "multiply", "target": "handsMelee", "value": 0 }
 	],
-	"mnr": [ { "operation": "multiply", "target": "attack", "value": 0.85 } ],
+	"mnr": [
+		{ "operation": "trait remove", "target": "overheat"},
+		{ "operation": "multiply", "target": "armour", "value": 1.275 },
+		{ "operation": "multiply", "target": "attack", "value": 1.275 },
+		{ "operation": "multiply", "target": "cost", "value": 1.275}
+	],
 	"voi": [ { "operation": "multiply", "target": "attack", "value": 1.2 } ],
 	"ada": [ { "operation": "multiply", "target": "attack", "value": 1.1 } ],
 	"dae": 
